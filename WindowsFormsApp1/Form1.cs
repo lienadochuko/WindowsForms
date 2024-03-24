@@ -36,6 +36,8 @@ namespace WindowsFormsApp1
         //    optionSelected = cb.SelectedItem.ToString();
         //}
 
+        Registrations Reg = new Registrations();
+
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("You selected: " + optionSelected);
@@ -43,7 +45,7 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Register Form Completed ");
+            Reg.Show();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
