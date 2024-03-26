@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Xml.Linq;
+using Microsoft.Office.Interop.Excel;
 
 namespace WindowsFormsApp1
 {
@@ -19,7 +20,7 @@ namespace WindowsFormsApp1
         SqlConnection connection = new SqlConnection();
         SqlCommand cmd = new SqlCommand();
         SqlDataAdapter dataAdapter = new SqlDataAdapter();
-        DataTable dt = new DataTable();
+        System.Data.DataTable dt;
         int ID;
 
         public Registrations()
@@ -28,11 +29,13 @@ namespace WindowsFormsApp1
             //connection.ConnectionString = path;
             connection = new SqlConnection(path);
             displayData();
+            BtnUpdate.Enabled = false;
+            BtnDelete.Enabled = false;
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            if(textLastName.Text == "" || textFirstName.Text == "" || textJobGrade.Text == "" || textID.Text == "" || textEmail.Text == "" || textAddress.Text == "")
+            if (textLastName.Text == "" || textFirstName.Text == "" || textJobGrade.Text == "" || textID.Text == "" || textEmail.Text == "" || textAddress.Text == "")
             {
                 MessageBox.Show("Please fill in all fields");
 
@@ -70,9 +73,10 @@ namespace WindowsFormsApp1
                 }
             }
         }
-    
+
         public void clear()
         {
+            ID = 0;
             textLastName.Text = "";
             textFirstName.Text = "";
             textJobGrade.Text = "";
@@ -87,7 +91,7 @@ namespace WindowsFormsApp1
         {
             try
             {
-                dt = new DataTable();
+                dt = new System.Data.DataTable();
                 connection.Open();
                 dataAdapter = new SqlDataAdapter("SELECT * FROM Employee", connection);
                 dataAdapter.Fill(dt);
@@ -103,6 +107,9 @@ namespace WindowsFormsApp1
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            BtnSave.Enabled = false;
+            BtnUpdate.Enabled = true;
+            BtnDelete.Enabled = true;
             ID = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
             textLastName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             textFirstName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
@@ -113,7 +120,7 @@ namespace WindowsFormsApp1
             radioMale.Checked = false;
             radioFemale.Checked = false;
 
-            if(dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString() == "Female")
+            if (dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString() == "Female")
             {
                 radioFemale.Checked = true;
             }
@@ -128,7 +135,7 @@ namespace WindowsFormsApp1
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
             string gender;
-            if(ID <= 0)
+            if (ID <= 0)
             {
                 MessageBox.Show("Select an Employee to Update from the Table");
             }
@@ -157,12 +164,102 @@ namespace WindowsFormsApp1
                     MessageBox.Show("Employee Data has been Updated");
                     clear();
                     displayData();
+                    BtnSave.Enabled = true;
+                    BtnUpdate.Enabled = false;
+                    BtnDelete.Enabled = false;
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                     connection.Close();
+                    clear();
+                    displayData();
+                    BtnSave.Enabled = true;
+                    BtnUpdate.Enabled = false;
+                    BtnDelete.Enabled = false;
                 }
+            }
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                connection.Open();
+                cmd = new SqlCommand("DELETE fron Employee where Employee_Id ='" + ID + "' ", connection);
+                cmd.ExecuteNonQuery();
+                connection.Close();
+                MessageBox.Show("Employee Data has been Deleted");
+                clear();
+                displayData();
+                BtnSave.Enabled = true;
+                BtnUpdate.Enabled = false;
+                BtnDelete.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                connection.Close();
+                clear();
+                displayData();
+                BtnSave.Enabled = true;
+                BtnUpdate.Enabled = false;
+                BtnDelete.Enabled = false;
+            }
+
+        }
+
+        private void BtnReset_Click(object sender, EventArgs e)
+        {
+            BtnSave.Enabled = true;
+            BtnUpdate.Enabled = false;
+            BtnDelete.Enabled = false;
+            clear();
+        }
+
+        private void textSearch_TextChanged_1(object sender, EventArgs e)
+        {
+            connection.Open();
+            dataAdapter = new SqlDataAdapter("select * from Employee where Employee_LastName like '%" + textSearch.Text + "%' ", connection);
+            dt = new System.Data.DataTable();
+            dataAdapter.Fill(dt);
+            dataGridView1.DataSource = dt;
+            connection.Close();
+        }
+
+        private void BtnExporttoExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                Workbook workbook = excel.Workbooks.Add(XlSheetType.xlWorksheet);
+                Worksheet sheet = (Worksheet)excel.ActiveSheet;
+                excel.Visible = true;
+
+                for (int j = 2; j <= dataGridView1.Rows.Count; j++)
+                {
+                    for (int i = 1; i <= 1; i++)
+                    {
+                        sheet.Cells[j, i] = dataGridView1.Rows[j - 2].Cells[i - 1].Value;
+                    }
+                }
+
+                for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
+                {
+                    sheet.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
+                }
+
+                for (int g = 0; g < dataGridView1.Columns.Count - 1; g++)
+                {
+                    for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                    {
+                        sheet.Cells[g + 2, j + 1] = dataGridView1.Rows[g].Cells[j].Value.ToString();
+                    }
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
