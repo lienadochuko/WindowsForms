@@ -63,6 +63,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cta {
+            get {
+                object obj = ResourceManager.GetObject("Cta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GRDS_logo {
             get {
                 object obj = ResourceManager.GetObject("GRDS-logo", resourceCulture);
@@ -96,6 +106,16 @@ namespace WindowsFormsApp1.Properties {
         internal static System.Drawing.Bitmap Naira_Dollar {
             get {
                 object obj = ResourceManager.GetObject("Naira-Dollar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Name_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Name Icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

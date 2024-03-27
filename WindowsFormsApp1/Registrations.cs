@@ -237,27 +237,22 @@ namespace WindowsFormsApp1
                 Worksheet sheet = (Worksheet)excel.ActiveSheet;
                 excel.Visible = true;
 
-                for (int j = 2; j <= dataGridView1.Rows.Count; j++)
+                // Write column headers
+                for (int i = 0; i < dataGridView1.Columns.Count; i++)
                 {
-                    for (int i = 1; i <= 1; i++)
-                    {
-                        sheet.Cells[j, i] = dataGridView1.Rows[j - 2].Cells[i - 1].Value;
-                    }
+                    sheet.Cells[1, i + 1] = dataGridView1.Columns[i].HeaderText;
                 }
 
-                for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
-                {
-                    sheet.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
-                }
-
-                for (int g = 0; g < dataGridView1.Columns.Count - 1; g++)
+                // Write data rows
+                for (int g = 0; g < dataGridView1.Rows.Count; g++)
                 {
                     for (int j = 0; j < dataGridView1.Columns.Count; j++)
                     {
-                        sheet.Cells[g + 2, j + 1] = dataGridView1.Rows[g].Cells[j].Value.ToString();
+                        sheet.Cells[g + 2, j + 1] = dataGridView1.Rows[g].Cells[j].Value?.ToString();
                     }
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
