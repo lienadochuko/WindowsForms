@@ -50,7 +50,9 @@ namespace WindowsFormsApp1
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            Login obj = new Login();
+            obj.Show();
+            this.Hide();
         }
     }
 }

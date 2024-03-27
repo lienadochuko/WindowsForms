@@ -84,7 +84,7 @@
             this.BtnExporttoExcel.Location = new System.Drawing.Point(6, 332);
             this.BtnExporttoExcel.Name = "BtnExporttoExcel";
             this.BtnExporttoExcel.Size = new System.Drawing.Size(108, 50);
-            this.BtnExporttoExcel.TabIndex = 7;
+            this.BtnExporttoExcel.TabIndex = 4;
             this.BtnExporttoExcel.Text = "Export to Excel";
             this.BtnExporttoExcel.UseVisualStyleBackColor = false;
             this.BtnExporttoExcel.Click += new System.EventHandler(this.BtnExporttoExcel_Click);
@@ -99,7 +99,7 @@
             this.BtnReset.Location = new System.Drawing.Point(6, 264);
             this.BtnReset.Name = "BtnReset";
             this.BtnReset.Size = new System.Drawing.Size(108, 50);
-            this.BtnReset.TabIndex = 6;
+            this.BtnReset.TabIndex = 3;
             this.BtnReset.Text = "Reset";
             this.BtnReset.UseVisualStyleBackColor = false;
             this.BtnReset.Click += new System.EventHandler(this.BtnReset_Click);
@@ -114,7 +114,7 @@
             this.BtnDelete.Location = new System.Drawing.Point(6, 194);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(108, 50);
-            this.BtnDelete.TabIndex = 5;
+            this.BtnDelete.TabIndex = 2;
             this.BtnDelete.Text = "Delete";
             this.BtnDelete.UseVisualStyleBackColor = false;
             this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
@@ -129,7 +129,7 @@
             this.BtnUpdate.Location = new System.Drawing.Point(6, 126);
             this.BtnUpdate.Name = "BtnUpdate";
             this.BtnUpdate.Size = new System.Drawing.Size(108, 50);
-            this.BtnUpdate.TabIndex = 4;
+            this.BtnUpdate.TabIndex = 1;
             this.BtnUpdate.Text = "Update";
             this.BtnUpdate.UseVisualStyleBackColor = false;
             this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
@@ -144,7 +144,7 @@
             this.BtnSave.Location = new System.Drawing.Point(6, 56);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(108, 50);
-            this.BtnSave.TabIndex = 3;
+            this.BtnSave.TabIndex = 0;
             this.BtnSave.Text = "Save";
             this.BtnSave.UseVisualStyleBackColor = false;
             this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
@@ -180,7 +180,7 @@
             this.radioFemale.Location = new System.Drawing.Point(413, 136);
             this.radioFemale.Name = "radioFemale";
             this.radioFemale.Size = new System.Drawing.Size(59, 17);
-            this.radioFemale.TabIndex = 14;
+            this.radioFemale.TabIndex = 6;
             this.radioFemale.TabStop = true;
             this.radioFemale.Text = "Female";
             this.radioFemale.UseVisualStyleBackColor = true;
@@ -200,7 +200,7 @@
             this.textAddress.Multiline = true;
             this.textAddress.Name = "textAddress";
             this.textAddress.Size = new System.Drawing.Size(459, 30);
-            this.textAddress.TabIndex = 16;
+            this.textAddress.TabIndex = 7;
             // 
             // label7
             // 
@@ -217,7 +217,7 @@
             this.textSearch.Multiline = true;
             this.textSearch.Name = "textSearch";
             this.textSearch.Size = new System.Drawing.Size(384, 30);
-            this.textSearch.TabIndex = 18;
+            this.textSearch.TabIndex = 8;
             this.textSearch.TextChanged += new System.EventHandler(this.textSearch_TextChanged_1);
             // 
             // Registrar
@@ -262,7 +262,7 @@
             this.textID.Multiline = true;
             this.textID.Name = "textID";
             this.textID.Size = new System.Drawing.Size(185, 30);
-            this.textID.TabIndex = 12;
+            this.textID.TabIndex = 4;
             // 
             // textJobGrade
             // 
@@ -270,7 +270,7 @@
             this.textJobGrade.Multiline = true;
             this.textJobGrade.Name = "textJobGrade";
             this.textJobGrade.Size = new System.Drawing.Size(193, 30);
-            this.textJobGrade.TabIndex = 10;
+            this.textJobGrade.TabIndex = 3;
             // 
             // label2
             // 
@@ -287,7 +287,7 @@
             this.textFirstName.Multiline = true;
             this.textFirstName.Name = "textFirstName";
             this.textFirstName.Size = new System.Drawing.Size(193, 30);
-            this.textFirstName.TabIndex = 8;
+            this.textFirstName.TabIndex = 1;
             // 
             // label3
             // 
@@ -304,7 +304,7 @@
             this.textEmail.Multiline = true;
             this.textEmail.Name = "textEmail";
             this.textEmail.Size = new System.Drawing.Size(185, 30);
-            this.textEmail.TabIndex = 6;
+            this.textEmail.TabIndex = 2;
             // 
             // label1
             // 
@@ -321,7 +321,7 @@
             this.radioMale.Location = new System.Drawing.Point(331, 135);
             this.radioMale.Name = "radioMale";
             this.radioMale.Size = new System.Drawing.Size(48, 17);
-            this.radioMale.TabIndex = 4;
+            this.radioMale.TabIndex = 5;
             this.radioMale.TabStop = true;
             this.radioMale.Text = "Male";
             this.radioMale.UseVisualStyleBackColor = true;
@@ -332,7 +332,7 @@
             this.textLastName.Multiline = true;
             this.textLastName.Name = "textLastName";
             this.textLastName.Size = new System.Drawing.Size(185, 30);
-            this.textLastName.TabIndex = 1;
+            this.textLastName.TabIndex = 0;
             // 
             // LastName
             // 
